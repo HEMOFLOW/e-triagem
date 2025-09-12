@@ -1,0 +1,16 @@
+/.idea/
+/vendor/
+/node_modules/
+.env
+.env.local
+.env.*.local
+.DS_Store
+.vscode/
+/.history/
+/composer.lock
+
+# Apache/PHP logs
+*.log
+
+# Windows thumbnail cache
+Thumbs.db
