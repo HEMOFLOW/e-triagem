@@ -4,7 +4,26 @@
  * Projeto QR Code - Sistema de Doação de Sangue
  */
 
+// Carregamento simples de arquivo .env (override de variáveis quando presentes)
+$envFile = __DIR__ . '/../.env';
+if (file_exists($envFile)) {
+    $lines = file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        if (strpos(trim($line), '#') === 0) continue;
+        if (!strpos($line, '=')) continue;
+        list($name, $value) = array_map('trim', explode('=', $line, 2));
+        if ($name === '') continue;
+        // Se a variável ainda não existir em getenv, coloque-a
+        if (getenv($name) === false) {
+            putenv("$name=$value");
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
+}
+
 class Database {
+    // Valores padrão (servem como fallback)
     private $host = 'localhost';
     private $db_name = 'projeto_qr_code';
     private $username = 'root';
@@ -14,16 +33,22 @@ class Database {
 
     public function getConnection() {
         $this->pdo = null;
-        
         try {
-            $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name . ";charset=" . $this->charset;
+            // Prioriza variáveis de ambiente: DB_HOST, DB_NAME, DB_USER, DB_PASS, DB_CHARSET
+            $host = getenv('DB_HOST') ?: $this->host;
+            $dbName = getenv('DB_NAME') ?: $this->db_name;
+            $user = getenv('DB_USER') ?: $this->username;
+            $pass = getenv('DB_PASS') ?: $this->password;
+            $charset = getenv('DB_CHARSET') ?: $this->charset;
+
+            $dsn = "mysql:host={$host};dbname={$dbName};charset={$charset}";
             $options = [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
             ];
-            
-            $this->pdo = new PDO($dsn, $this->username, $this->password, $options);
+
+            $this->pdo = new PDO($dsn, $user, $pass, $options);
         } catch (PDOException $e) {
             error_log("Erro de conexão: " . $e->getMessage());
             throw new PDOException("Erro de conexão com o banco de dados");
@@ -38,7 +63,7 @@ function getConnection() {
     return $database->getConnection();
 }
 
-// Função para inicializar o banco de dados
+// Função para inicializar o banco de dados (chame manualmente via tools/init_db.php)
 function initDatabase() {
     try {
         $pdo = getConnection();
@@ -135,7 +160,4 @@ function initDatabase() {
     }
 }
 
-// Inicializar banco automaticamente
-initDatabase();
-
-
+?>
