@@ -317,3 +317,93 @@ Sua aplicação **Projeto QR Code** agora está rodando em **PHP no Apache24**!
 - Aplicação: http://localhost/
 - Login: http://localhost/login.php
 - Cadastro: http://localhost/cadastro.php
+
+- # Documentação de Configuração do Projeto e-Triagem
+
+Este arquivo descreve todas as configurações e dados necessários para o funcionamento do sistema e-Triagem.
+
+## Estrutura da Pasta `config`
+
+- `database.php`: Script responsável pela conexão com o banco de dados MySQL.
+- `README.md`: Documentação das configurações e dados utilizados.
+
+## Configuração do Banco de Dados
+
+O sistema utiliza MySQL como banco de dados. Os dados de conexão estão definidos em `database.php`.
+
+### Exemplo de configuração (`database.php`):
+```php
+$host = 'localhost';
+$user = 'usuario';
+$password = 'senha';
+$dbname = 'e_triagem';
+$conn = new mysqli($host, $user, $password, $dbname);
+```
+
+- **host**: Endereço do servidor MySQL (geralmente `localhost`)
+- **user**: Usuário do banco de dados
+- **password**: Senha do usuário
+- **dbname**: Nome do banco de dados
+
+### Requisitos do Banco de Dados
+
+- O banco de dados deve conter as tabelas necessárias para cadastro, login, dashboard e demais funcionalidades do sistema.
+- Recomenda-se criar um usuário específico para o sistema com permissões restritas.
+
+## Configuração do Apache
+
+- O arquivo `apache-config.conf` contém exemplos de configuração para o Apache.
+- Certifique-se de que o Apache está instalado e configurado para servir arquivos PHP.
+- O diretório raiz do projeto deve ser configurado como `DocumentRoot` no Apache.
+
+## Configuração do PHP
+
+- O PHP deve estar instalado e configurado no servidor.
+- Recomenda-se PHP 7.4 ou superior.
+- Extensão `mysqli` deve estar habilitada.
+
+## Segurança
+
+- Nunca compartilhe dados sensíveis (usuário/senha) em ambientes públicos.
+- Utilize variáveis de ambiente ou arquivos `.env` para armazenar credenciais em produção.
+- Mantenha o arquivo `database.php` fora do diretório público sempre que possível.
+
+## Dados Sensíveis
+
+- Os dados de acesso ao banco de dados são definidos em `database.php`.
+- Altere as credenciais padrão após a instalação.
+
+## Observações
+
+---
+
+## Funcionalidades do Aplicativo e-Triagem
+
+O sistema e-Triagem é capaz de:
+
+- 👤 Realizar cadastro de usuários (pacientes, profissionais, administradores)
+- 🔑 Gerenciar login e autenticação de usuários
+- 📝 Registrar triagem de pacientes
+- 📊 Exibir painel/dashboard com estatísticas e informações relevantes
+- 📋 Listar, editar e excluir registros de pacientes
+- 🛡️ Gerenciar permissões de acesso por tipo de usuário
+- 🕓 Registrar histórico de atendimentos
+- 📄 Gerar relatórios de triagem e atendimentos
+- 🔍 Buscar pacientes por nome, CPF ou outros filtros
+- 🚪 Realizar logout seguro
+- 💻 Interface web responsiva e intuitiva
+- 🗄️ Integração com banco de dados MySQL
+- 🔒 Segurança básica de dados e sessões
+- 👥 Suporte a múltiplos usuários simultâneos
+- 🎨 Customização de estilos via CSS
+- ⚡ Scripts interativos via JavaScript
+- 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
+
+---
+
+Consulte o arquivo `GUIA-APACHE-PHP.md` para instruções detalhadas de instalação do Apache e PHP.
+Para dúvidas ou problemas, consulte a documentação oficial do Apache e PHP.
+
+---
+
+**Última atualização:** 23 de setembro de 2025
