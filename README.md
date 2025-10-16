@@ -1,4 +1,25 @@
+## Funcionalidades do Aplicativo e-Triagem
 
+O sistema e-Triagem é capaz de:
+
+- 👤 Realizar cadastro de usuários (pacientes, profissionais, administradores)
+- 🔑 Gerenciar login e autenticação de usuários
+- 📝 Registrar triagem de pacientes
+- 📊 Exibir painel/dashboard com estatísticas e informações relevantes
+- 📋 Listar, editar e excluir registros de pacientes
+- 🛡️ Gerenciar permissões de acesso por tipo de usuário
+- 🕓 Registrar histórico de atendimentos
+- 📄 Gerar relatórios de triagem e atendimentos
+- 🔍 Buscar pacientes por nome, CPF ou outros filtros
+- 🚪 Realizar logout seguro
+- 💻 Interface web responsiva e intuitiva
+- 🗄️ Integração com banco de dados MySQL
+- 🔒 Segurança básica de dados e sessões
+- 👥 Suporte a múltiplos usuários simultâneos
+- 🎨 Customização de estilos via CSS
+- ⚡ Scripts interativos via JavaScript
+- 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
+- 
 # Título do Projeto
 
 Uma breve descrição sobre o que esse projeto faz e para quem ele é
@@ -377,27 +398,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 
 ---
 
-## Funcionalidades do Aplicativo e-Triagem
 
-O sistema e-Triagem é capaz de:
-
-- 👤 Realizar cadastro de usuários (pacientes, profissionais, administradores)
-- 🔑 Gerenciar login e autenticação de usuários
-- 📝 Registrar triagem de pacientes
-- 📊 Exibir painel/dashboard com estatísticas e informações relevantes
-- 📋 Listar, editar e excluir registros de pacientes
-- 🛡️ Gerenciar permissões de acesso por tipo de usuário
-- 🕓 Registrar histórico de atendimentos
-- 📄 Gerar relatórios de triagem e atendimentos
-- 🔍 Buscar pacientes por nome, CPF ou outros filtros
-- 🚪 Realizar logout seguro
-- 💻 Interface web responsiva e intuitiva
-- 🗄️ Integração com banco de dados MySQL
-- 🔒 Segurança básica de dados e sessões
-- 👥 Suporte a múltiplos usuários simultâneos
-- 🎨 Customização de estilos via CSS
-- ⚡ Scripts interativos via JavaScript
-- 🛠️ Fácil instalação e configuração em ambiente Apache/PHP
 
 <img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/2facb78b-42cb-4d22-8325-a275a07a6810" />
 
